@@ -1,0 +1,32 @@
+\contentsline {chapter}{ACKNOWLEDGEMENTS}{iii}
+\contentsline {chapter}{ABSTRACT}{iv}
+\contentsline {chapter}{\"OZET}{v}
+\contentsline {chapter}{LIST OF FIGURES}{viii}
+\contentsline {chapter}{LIST OF TABLES}{ix}
+\contentsline {chapter}{LIST OF SYMBOLS}{x}
+\contentsline {chapter}{LIST OF ACRONYMS/ABBREVIATIONS}{xi}
+\contentsline {chapter}{\numberline {1.}INTRODUCTION}{1}
+\contentsline {chapter}{\numberline {2.}EXPERIMENTAL SETUP AND DATA}{1}
+\contentsline {chapter}{\numberline {3.}AIRFLOW CURVE ESTIMATION}{2}
+\contentsline {section}{\numberline {3.1.} Respiratory Sound Modelling}{2}
+\contentsline {section}{\numberline {3.2.} Literature Survey}{2}
+\contentsline {section}{\numberline {3.3.} Time Varying Autoregressive Modeling}{2}
+\contentsline {subsection}{\numberline {3.3.1.} Method}{2}
+\contentsline {subsection}{\numberline {3.3.2.} Tests and Results}{2}
+\contentsline {section}{\numberline {3.4.} Autoregressive Modeling with Overlapping Windows}{2}
+\contentsline {subsection}{\numberline {3.4.1.} Method}{2}
+\contentsline {subsection}{\numberline {3.4.2.} Tests and Results}{2}
+\contentsline {section}{\numberline {3.5.} Time - Frequency Analysis}{2}
+\contentsline {subsection}{\numberline {3.5.1.} Method}{2}
+\contentsline {subsection}{\numberline {3.5.2.} Tests and Results}{2}
+\contentsline {section}{\numberline {3.6.} Unified Estimations}{2}
+\contentsline {subsection}{\numberline {3.6.1.} Method}{2}
+\contentsline {subsection}{\numberline {3.6.2.} Tests and Results}{2}
+\contentsline {chapter}{\numberline {4.}AIRFLOW PHASE DETECTION}{3}
+\contentsline {section}{\numberline {4.1.} Estimation of Periods}{3}
+\contentsline {section}{\numberline {4.2.} Estimation of Change Point Locations}{3}
+\contentsline {section}{\numberline {4.3.} Feature Extraction}{3}
+\contentsline {section}{\numberline {4.4.} Results}{3}
+\contentsline {chapter}{\numberline {5.}CONCLUSION}{4}
+\contentsline {chapter}{REFERENCES}{5}
+\noindent APPENDIX\ A:\hspace {1.6ex}APPLICATION \penalty \@M \leaders \hbox {$\mathsurround \z@ \mkern 4.5mu.\mkern 4.5mu$} \hfill \penalty \@M \hbox to1.55em{\hss 6}\par 

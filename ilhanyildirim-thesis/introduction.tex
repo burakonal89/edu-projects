@@ -1,0 +1,30 @@
+\chapter{INTRODUCTION}
+\pagenumbering{arabic}
+Listening to respiratory sounds to gain information about respiratory diseases is a method which has been applied for at least 2400 years. Since then, different auscultation techniques have been used. The most widely used tool developed for this purpose is called "stethoscope" and it is invented in 1816 by Rene Laënnec \cite{breath-sounds}. Medicine doctors still use this device to diagnose several diseases such as asthma, bronchitis etc. \par
+
+In recent decades, engineers started to work on respiratory sounds and they produced electronic stethoscopes. These electronic stethoscopes have some
+advantages over the traditional ones. First of all, the frequency band
+is not limited \cite{advances-beyond-stet} by the mechanic structure of stethoscope and the sounds can be recorded for reuse. Another advantage is that the respiratory sound recordings made analyzing the sound with the help of computers possible. \par
+ 
+In recent years, together with developing classification techniques, there has been a great effort in automatic classification of respiratory sounds as healthy or sick \cite{ipek-svm-gmm}. Some of these methods are dependent not only on sounds but also on the airflow information \cite{lung-subphase}. Airflow is usually recorded by a tool which is called pneumotachograph. This tool is not useful in case of subject who have some disabilities.
+
+Main motivation of this thesis is to estimate the airflow and respiratory phases from the respiratory sounds recorded at chest wall without using pneumotachograph to enable airflow measurements to be easier and a development of single handheld electronic stethoscope whose recording will be enough for automatic diagnose. 
+
+Before giving the preview of the work has been done over this thesis, we may give a brief review of the literature about the relation between flow, phase and respiratory sounds.
+
+\textit{Lessard and Wong} \cite{corr-cons-flow-spectrum} reported that the relation between the spectral parameters which are mean frequency, frequency of maximum power and the highest frequency at which the power in the spectrum is at least 10 percent of maximum power, and flow rate is not linear and spectral parameters saturates as the flow rate goes beyond 0.75 $l/s$. \par
+\textit{Yadollahi and Moussavi} \cite{entropy-tracheal} reported that using entropy of bandpass filtered tracheal sounds by using overlapping windows whose durations are 100 milliseconds. They achieved average error of 7.3 \% and 7.4 \% for inspiratory and expiratory phases after calibrating the model which uses the entropy information.\par
+\textit{Huq and Moussavi} \cite{saiful-moussavi-log-variance} proposed using log of variance (LV) first to detect onsets. For phase identification, they used 4 parameters calculated over LV curve and the duration of phase. They developed and tested the method for tracheal sounds and it is reported that 95.6\% accuracy was achieved for phase identification after onsets are verified by visual inspection.\par
+\textit{Moussavi et al.} \cite{computerised-acoustical-phase} suggested using tracheal sounds for onset detection and the power difference in 150-450 Hz at the "best recording position", where the difference in power for inspiration and expiration is greatest, for phase identification. It is reported that the success rate in phase identification is 100\% after the onsets are found.\par
+\textit{Golabbakhsh et al.} \cite{flow-trachea-adaptive} suggested using the average power $(P_{ave})$ of tracheal sounds to estimate the respiratory flow. They have two approaches, first one is expressing the flow as a linear function of log of $P_{ave}$ as in \ref{linear_log_p_ave} and the other one is training an adaptive filter with three taps and whose input is $P_{ave}$ as in \ref{adaptive_p_ave}. 
+\begin{align}
+	\hat{F} = c_0 + c_1 \log(P_{ave}) \label{linear_log_p_ave}\\
+	\hat{F} = \sum_{i=1}^{M}w_iP_{ave} \label{adaptive_p_ave}
+\end{align} \par
+\textit{Çiftçi and Kahya} \cite{koray-ieee-embs} modeled the sounds recorded at both trachea and chest as time varying autoregressive (TVAR) processes by using Fourier basis functions and used the first autoregressive (AR) coefficient vector as the estimate of absolute airflow curve. Reported correlations for sounds recorded at trachea and chest wall were 0.9 and about 0.6 (extracted from figure in paper) respectively. \par
+Organization of thesis will be explained in following paragraphs. \par
+In chapter \ref{chp:exp-setup-data}, the experimental setup and data will be explained. \par 
+In chapter \ref{chp:airflow_curve_estimation}, we will describe AR and TVAR processes and the methods to find TVAR coefficients of a signal, the methods we will describe and use are windowing based AR modeling, TVAR modeling with basis functions and Kalman filter. We will also present Short Time Fourier Transform (STFT) and Wiener filter which will be used to unify different estimations. Finally experiments and results will be presented. \par
+In chapter \ref{chp:airflow_phase_estimation}, the method for period estimation will be given first. Then neural networks approach and features will be explained. After neural networks, the method which estimates the transition points and then identifies the phases between estimated transition points will be described. Lastly, experiments and results will be documented. \par 
+In the conclusion chapter, the last words about this work will be said.
+ 

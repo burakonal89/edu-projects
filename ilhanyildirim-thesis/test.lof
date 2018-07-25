@@ -1,0 +1,32 @@
+\contentsline {figure}{\numberline {Figure 2.1.}{\ignorespaces Microphone Locations on the Chest Wall \cite {ipek-phd-2}}\vspace \baselineskip }{4}
+\contentsline {figure}{\numberline {Figure 3.1.}{\ignorespaces A respiratory sound, corresponding airflow and STFT magnitude plot}\vspace \baselineskip }{13}
+\contentsline {figure}{\numberline {Figure 3.2.}{\ignorespaces Boxplot for correlation coefficient of AR coefficient evolution with absolute value of airflow for different coefficient orders}\vspace \baselineskip }{16}
+\contentsline {figure}{\numberline {Figure 3.3.}{\ignorespaces Boxplot for correlation coefficient of AR coefficient evolution with airflow for different coefficient orders}\vspace \baselineskip }{16}
+\contentsline {figure}{\numberline {Figure 3.4.}{\ignorespaces Boxplot for correlation coefficient of AR coefficient evolution with airflow for different AR model orders}\vspace \baselineskip }{17}
+\contentsline {figure}{\numberline {Figure 3.5.}{\ignorespaces Boxplot for correlation coefficient of first AR coefficient evolution with absolute airflow for different window lengths and overlap ratios}\vspace \baselineskip }{17}
+\contentsline {figure}{\numberline {Figure 3.6.}{\ignorespaces Boxplot for correlation coefficient of first AR coefficient evolution with absolute airflow for different TVAR model orders}\vspace \baselineskip }{19}
+\contentsline {figure}{\numberline {Figure 3.7.}{\ignorespaces Boxplot for correlation coefficient of first AR coefficient evolution with absolute airflow for different frequency coverage}\vspace \baselineskip }{20}
+\contentsline {figure}{\numberline {Figure 3.8.}{\ignorespaces Boxplot for correlation coefficient of first AR coefficient evolution with absolute airflow for number of basis functions}\vspace \baselineskip }{20}
+\contentsline {figure}{\numberline {Figure 3.9.}{\ignorespaces Boxplot for correlation coefficient of first AR coefficient evolution with absolute airflow for different process noise variances}\vspace \baselineskip }{21}
+\contentsline {figure}{\numberline {Figure 3.10.}{\ignorespaces Mean of correlations for each band for STFT method with 64 fft bins, window lengths and overlap ratios}\vspace \baselineskip }{21}
+\contentsline {figure}{\numberline {Figure 3.11.}{\ignorespaces Mean of correlations for each band for STFT method with 128 fft bins, window lengths and overlap ratios}\vspace \baselineskip }{22}
+\contentsline {figure}{\numberline {Figure 3.12.}{\ignorespaces Mean of correlations for each band for STFT method with 256 fft bins, window lengths and overlap ratios}\vspace \baselineskip }{22}
+\contentsline {figure}{\numberline {Figure 3.13.}{\ignorespaces Mean of correlations for each channel with different number of vectors unified}\vspace \baselineskip }{23}
+\contentsline {figure}{\numberline {Figure 4.1.}{\ignorespaces Visual Description Of Period Estimation}\vspace \baselineskip }{26}
+\contentsline {figure}{\numberline {Figure 4.2.}{\ignorespaces Diagram of A Neuron}\vspace \baselineskip }{27}
+\contentsline {figure}{\numberline {Figure 4.3.}{\ignorespaces Some Activation Functions}\vspace \baselineskip }{28}
+\contentsline {figure}{\numberline {Figure 4.4.}{\ignorespaces A Neural Network With One Hidden Layer}\vspace \baselineskip }{28}
+\contentsline {figure}{\numberline {Figure 4.5.}{\ignorespaces Distribution of AR Coefficients For Inspiration and Expiration}\vspace \baselineskip }{31}
+\contentsline {figure}{\numberline {Figure 4.6.}{\ignorespaces Distribution of Shannon Entropy Estimate For Inspiration and Expiration}\vspace \baselineskip }{32}
+\contentsline {figure}{\numberline {Figure 4.7.}{\ignorespaces Distribution of Percentile Frequency Measures For Inspiration and Expiration}\vspace \baselineskip }{33}
+\contentsline {figure}{\numberline {Figure 4.8.}{\ignorespaces Distribution of Variance For Inspiration and Expiration}\vspace \baselineskip }{34}
+\contentsline {figure}{\numberline {Figure 4.9.}{\ignorespaces Distribution of Spectral Magnitudes For Inspiration and Expiration}\vspace \baselineskip }{35}
+\contentsline {figure}{\numberline {Figure 4.10.}{\ignorespaces Distribution of Kurtosis For Inspiration and Expiration}\vspace \baselineskip }{36}
+\contentsline {figure}{\numberline {Figure 4.11.}{\ignorespaces KL-Divergence Between Distributions for Features Calculated in Inspiration and Expiration}\vspace \baselineskip }{37}
+\contentsline {figure}{\numberline {Figure 4.12.}{\ignorespaces Filtering The Flow Estimate}\vspace \baselineskip }{39}
+\contentsline {figure}{\numberline {Figure 4.13.}{\ignorespaces Type-1 and Type-2 Minima}\vspace \baselineskip }{40}
+\contentsline {figure}{\numberline {Figure 4.14.}{\ignorespaces Transition Point Estimation}\vspace \baselineskip }{40}
+\contentsline {figure}{\numberline {Figure 4.15.}{\ignorespaces Performance of Neural Network vs Number of Hidden Neurons}\vspace \baselineskip }{42}
+\contentsline {figure}{\numberline {Figure 4.16.}{\ignorespaces Performance of Neural Network vs Channels}\vspace \baselineskip }{43}
+\contentsline {figure}{\numberline {Figure 4.17.}{\ignorespaces Performance of Neural Network vs Channels After Correction}\vspace \baselineskip }{43}
+\contentsline {figure}{\numberline {Figure 4.18.}{\ignorespaces Performance of Phase Estimation Based On Local Minima}\vspace \baselineskip }{44}

@@ -1,0 +1,52 @@
+\contentsline {chapter}{ACKNOWLEDGEMENTS}{iii}
+\contentsline {chapter}{ABSTRACT}{iv}
+\contentsline {chapter}{\"OZET}{v}
+\contentsline {chapter}{LIST OF FIGURES}{viii}
+\contentsline {chapter}{LIST OF TABLES}{xi}
+\contentsline {chapter}{LIST OF SYMBOLS}{xii}
+\contentsline {chapter}{LIST OF ACRONYMS/ABBREVIATIONS}{xiii}
+\contentsline {chapter}{\numberline {1.}INTRODUCTION}{1}
+\contentsline {chapter}{\numberline {2.}EXPERIMENTAL SETUP AND DATA}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {chapter}{\numberline {3.}AIRFLOW CURVE ESTIMATION}{5}
+\contentsline {section}{\numberline {3.1.} Autoregressive Models}{5}
+\contentsline {subsection}{\numberline {3.1.1.} Univariate Autoregressive Model}{5}
+\contentsline {subsection}{\numberline {3.1.2.} Time Varying Autoregressive Model}{8}
+\contentsline {subsubsection}{\numberline {3.1.2.1.} TVAR Coefficients Estimation With Fourier Basis Functions}{8}
+\contentsline {subsubsection}{\numberline {3.1.2.2.} TVAR Coefficients Estimation With Kalman Filter}{10}
+\contentsline {section}{\numberline {3.2.} Time Frequency Analysis}{12}
+\contentsline {section}{\numberline {3.3.} Unifying Estimations}{14}
+\contentsline {section}{\numberline {3.4.} Experiments \& Results}{15}
+\contentsline {subsection}{\numberline {3.4.1.} Univariate Autoregressive Model}{15}
+\contentsline {subsection}{\numberline {3.4.2.} Time Varying Autoregressive Model with Basis Functions}{18}
+\contentsline {subsection}{\numberline {3.4.3.} Time Varying Autoregressive Model with Kalman Filter}{19}
+\contentsline {subsection}{\numberline {3.4.4.} Short Time Fourier Transform}{21}
+\contentsline {subsection}{\numberline {3.4.5.} Unifying Estimations}{22}
+\contentsline {subsection}{\numberline {3.4.6.} Result}{23}
+\contentsline {chapter}{\numberline {4.}AIRFLOW PHASE ESTIMATION}{25}
+\contentsline {section}{\numberline {4.1.} Period Estimation}{25}
+\contentsline {section}{\numberline {4.2.} Phase Estimation With Neural Networks}{25}
+\contentsline {subsection}{\numberline {4.2.1.} Description of Neural Networks}{27}
+\contentsline {subsubsection}{\numberline {4.2.1.1.} Neuron}{27}
+\contentsline {subsubsection}{\numberline {4.2.1.2.} Layers In Neural Networks}{28}
+\contentsline {subsubsection}{\numberline {4.2.1.3.} Learning Process In Neural Networks}{29}
+\contentsline {subsection}{\numberline {4.2.2.} Features}{29}
+\contentsline {subsubsection}{\numberline {4.2.2.1.} AR Coefficients}{30}
+\contentsline {subsubsection}{\numberline {4.2.2.2.} Shannon Entropy Estimate}{30}
+\contentsline {subsubsection}{\numberline {4.2.2.3.} Percentile Frequencies}{30}
+\contentsline {subsubsection}{\numberline {4.2.2.4.} Variance}{32}
+\contentsline {subsubsection}{\numberline {4.2.2.5.} Spectral Magnitude}{34}
+\contentsline {subsubsection}{\numberline {4.2.2.6.} Kurtosis}{36}
+\contentsline {subsection}{\numberline {4.2.3.} Denoisining The Output of Neural Network}{36}
+\contentsline {section}{\numberline {4.3.} Phase Estimation With Estimated Airflow Curve}{37}
+\contentsline {subsection}{\numberline {4.3.1.} Prefiltering}{38}
+\contentsline {paragraph}{}{38}
+\contentsline {subsection}{\numberline {4.3.2.} Local Minima Extraction}{38}
+\contentsline {subsection}{\numberline {4.3.3.} Selection of Transition Points}{38}
+\contentsline {subsection}{\numberline {4.3.4.} Estimating The Phases Given Transition Points}{41}
+\contentsline {section}{\numberline {4.4.} Experiments \& Results}{41}
+\contentsline {subsection}{\numberline {4.4.1.} Neural Networks}{41}
+\contentsline {paragraph}{}{41}
+\contentsline {subsection}{\numberline {4.4.2.} Transition Points Detection Based On Local Minima}{42}
+\contentsline {chapter}{\numberline {5.}CONCLUSION}{45}
+\contentsline {chapter}{REFERENCES}{47}

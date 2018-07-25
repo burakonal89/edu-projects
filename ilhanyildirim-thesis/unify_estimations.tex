@@ -1,0 +1,42 @@
+\section{Unifying Estimations}
+When we have an estimation problem with desired output $d$ and
+observations in $x$ vector if each observation in $x$ and $d$ are
+jointly wide sense stationary (wss) the optimum estimator for mean
+square error (MSE) is the Wiener filter \cite{adaptive-filter-theory}. We can write down the
+equations and derive the optimum filter. The estimation equation is
+given in \eqref{scalarestimation}, $\hat{d}$ is the estimation in this
+equation. Estimation error is given in \eqref{estimationerror} and the
+error measure we are interested in is given in
+\eqref{errorsquaredopen}
+\begin{align}
+\hat{d} = \sum_{i=1}^{N}w_ix_i = \bold{w^Tx} \label{scalarestimation} \\
+e = d - \hat{d} = d - \bold{w^Tx} \label{estimationerror} \\
+E[e^2] = E[|d - \hat{d}|^2] \label{errorsquared} \\
+E[e^2] = E[d^2 - 2d\bold{x^T w} + \bold{w^T x x^T w}]
+\label{errorsquaredopen}
+\end{align} \par
+In order to minimize the error we can differentiate with respect to
+$\bold{w}$ and find the value where derivative is zero. For error to
+be at its minimum the expectation in \eqref{derivative_error} must be
+zero, this requires $\bold{x}$ and $e$ to be uncorrelated.
+\begin{align}
+\frac{\partial E[e^2]}{\partial \boldsymbol{w}} =
+2E[e\frac{\partial e}{\partial \boldsymbol{w}}] = -2E[e x_i]
+\label{derivative_error}
+\end{align} \par
+If we rewrite error as difference between $d_n$ and
+$\bold{w_{opt}^Tx}$, then we can state the equations in
+\eqref{error_observation} and \eqref{error_observation_2}.
+\begin{align}
+E[(d_n - \bold{w_{opt}^Tx})\bold{x}] = 0 \label{error_observation}\\
+E[\bold{xx^T}]\bold{w_{opt}} = E[\bold{x}d_n] \label{error_observation_2}
+\end{align} \par
+The first expectation in \eqref{error_observation_2} is autocovariance
+matrix of $\bold{x}$ and the second expectation is crosscovariance
+between $x$ and $d$. The filter $w_{opt}$ is the called as Wiener
+filter. \par
+In previous sections we end up with vectors which are estimations of
+airflow. We will use a weighted sum of these estimations as our
+observations and weights will be decided by using this Wiener filter
+approach.
+

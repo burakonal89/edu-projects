@@ -1,0 +1,61 @@
+\documentclass[a4paper,onesided,12pt]{report}
+\usepackage{styles/fbe_tez}
+\usepackage[utf8]{inputenc} % To use Unicode (e.g. Turkish) characters
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\usepackage{amsmath, amsthm, amssymb}
+% Some extra symbols
+\usepackage[bottom]{footmisc}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{longtable}
+\graphicspath{{figures/}} % Graphics will be here
+
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+%\pagestyle{empty}
+%\includeonly{introduction} % To only process the given file
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+% COVER PAGE
+\title{AIRFLOW ESTIMATION FROM RESPIRATORY SOUNDS}
+\turkcebaslik{SOLUNUM SESLERİNDEN SOLUK AKIŞI KESTİRİMİ}
+\degree{B.S., Electrical \& Electronics Engineering, Boğaziçi University, 2013}
+\author{İlhan Yıldırım}
+\program{Electrical \& Electronics Engineering}
+\subyear{2017}
+
+% APPROVED BY PAGE
+\supervisor{Prof. Yasemin Z. Kahya}
+\cosuperi{Assist. Prof. İpek Şen}
+%\cosuperii{Title and Name of Cosupervisor II}
+\examineri{Prof. Emin Anarım}
+\examinerii{Assoc. Prof. Ali Emre Pusane}
+\examineriii{}
+%\examineriv{}
+%\examinerv{}
+\dateofapproval{01.01.2017}
+
+\newbox\bwk\edef\tempd#1pt{#1\string p\string t}\tempd\def\nbextr#1pt{#1}
+\def\npts#1{\expandafter\nbextr\the#1\space}
+\def\ttwplink#1#2{\special{ps:1 0 0 setrgbcolor}#2\special{ps:0 0 0 setrgbcolor}\setbox\bwk=\hbox{#2}\special{ps:( linkto #1)\space\npts{\wd\bwk} \npts{\dp\bwk} -\npts{\ht\bwk} true\space Cpos}}
+\begin{document}
+	
+	\pagenumbering{roman}
+	\makemstitle % M.S. thesis
+	\makeapprovalpage
+\chapter{INTRODUCTION}
+\chapter{EXPERIMENTAL SETUP AND DATA}
+\chapter{AIRFLOW CURVE ESTIMATION}
+\input{autoregressive_modeling}
+\input{time_freq_analysis}
+\input{unify_estimations}
+\input{experiments_results}
+\chapter{AIRFLOW PHASE ESTIMATION}
+\input{phase_estimation_using_airflow}
+\end{document}

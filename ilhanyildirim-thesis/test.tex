@@ -1,0 +1,107 @@
+\documentclass[a4paper,onesided,12pt]{report}
+\usepackage{styles/fbe_tez}
+\usepackage[utf8]{inputenc} % To use Unicode (e.g. Turkish) characters
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\usepackage{amsmath, amsthm, amssymb}
+% Some extra symbols
+\usepackage[bottom]{footmisc}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{longtable}
+\graphicspath{{figures/}} % Graphics will be here
+
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+%\pagestyle{empty}
+%\includeonly{introduction} % To only process the given file
+
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+
+
+% COVER PAGE
+\title{AIRFLOW ESTIMATION FROM RESPIRATORY SOUNDS}
+\turkcebaslik{SOLUNUM SESLERİNDEN SOLUK AKIŞI KESTİRİMİ}
+\degree{B.S., Electrical \& Electronics Engineering, Boğaziçi University, 2013}
+\author{İlhan Yıldırım}
+\program{Electrical \& Electronics Engineering}
+\subyear{2018}
+
+% APPROVED BY PAGE
+\supervisor{Prof. Yasemin Z. Kahya}
+\cosuperi{Assist. Prof. İpek Şen}
+%\cosuperii{Title and Name of Cosupervisor II}
+\examineri{Prof. Murat Saraçlar}
+\examinerii{Assoc. Prof. Rifat Koray Çiftçi}
+%\examineriii{}
+%\examineriv{}
+%\examinerv{}
+\dateofapproval{24.5.2018}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@sect}{\underbar}{\underline}{}{}
+\makeatother
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, calc, shapes, arrows}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\begin{document}
+	
+	\pagenumbering{roman}
+	\makemstitle % M.S. thesis
+	\makeapprovalpage
+	\begin{acknowledgements}
+		Acknowledgements come here...
+	\end{acknowledgements}
+	\begin{abstract}
+		One page abstract will come here.  
+	\end{abstract}
+	\begin{ozet}
+		Bir sayfa uzunluğunda özet gelecektir.
+	\end{ozet}
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\begin{symbols}
+		% The title will be typeset as "LIST OF SYMBOLS".
+		%
+		% Use a separate \sym command for each symbols definition.
+		% First Latin symbols in alphabetical order
+		
+		\sym{$a_{ij}$}{Description of $a_{ij}$}
+		\sym{$\mathbf{A}$}{State transition matrix of a hidden Markov model}
+		% Then Greek symbols in alphabetical order
+		\sym{}{}
+		\sym{$\alpha$}{Blending parameter \textit{or} scale}
+		\sym{$\beta_t(i)$}{Backward variable}
+		\sym{$\Theta$}{Parameter set}
+		\sym{ }{}
+		
+	\end{symbols}
+	
+	\begin{abbreviations}
+		% Abbreviations in alphabetical order
+		\sym{2D}{Two Dimensional}
+		\sym{3D}{Three Dimensional}
+		\sym{AAM}{Active Appearance Model}
+		\sym{ASM}{Active Shape Model}
+	\end{abbreviations}
+	
+
+\input{introduction}
+\input{exp_setup_data}
+\input{airflow_curve_estimation}
+\input{phase_estimation_using_airflow}
+\input{conclusion}
+\bibliographystyle{styles/fbe_tez_v11}
+\bibliography{references}
+
+\end{document}

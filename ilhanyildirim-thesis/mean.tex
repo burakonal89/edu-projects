@@ -1,0 +1,55 @@
+\subsubsection{Mean, Variance and Autocorrelation Of Autoregressive Processes}
+Expectation is a linear operator, then we can write the equation \ref{Mean of AR}. Recalling that e is white Gaussian i.e. $\mu_e=0$ at least one of the followings must hold $\sum_{i=1}^{N}a_i = 1$ or $\mu_X = 0$. For variance, one can write the \ref{Variance of AR -1}. Since white noise is uncorrelated with the values of process, the last term is zero. However, the middle term is a finite, nonzero value. This implies $\sum_{i=1}^{N}a_i < 1$. 
+\begin{equation}\label{Mean of AR}
+\mu_X = \sum_{i=1}^{N}{a_i\mu_X} + \mu_e 
+\end{equation}
+\begin{equation}\label{Variance of AR -1}
+\sigma_{X}^2 = \sum_{i=1}^{N}{a_i\sigma_X^2} + \sigma_e^2 + 2\sigma_{Xe} 
+\end{equation}
+If we reorganize what we have from deductions we had while calculating mean and variance, we can list as following:
+\begin{itemize}
+	\item $\sum_{i=1}^{N}a_i = 1$ or $\mu_X = 0$, from mean
+	\item $\sum_{i=1}^{N}a_i < 1$, from variance
+\end{itemize}
+Now we can say that $\sum_{i=1}^{N}a_i < 1$ is needed for an autoregressive process to be at least wide sense stationary and the mean of an autoregressive process must be zero.\linebreak
+In order to look at autocorrelation, let's first rewrite the variance equation as in \ref{Variance of AR}, \ref{Variance of AR 1} and \ref{Variance of AR 2}.
+\begin{equation}\label{Variance of AR}
+\sigma_{X}^2 = E(X(n)X(n)) - \mu_{X}^2 
+\end{equation}
+\begin{equation}\label{Variance of AR 1}
+\sigma_{X}^2 = \sum_{i=1}^{N}a_iE(X_nX_{n-i}) + E(X_ne_n) - \mu_{X}^2 
+\end{equation}
+\begin{equation}\label{Variance of AR 2}
+\sigma_{X}^2 = \sum_{i=1}^{N}a_iR_{XX}(i) + \sigma_e^2
+\end{equation}
+One of the descriptive functions of random processes is autocorrelation function given in \ref{Autocorrelation}. If we rewrite X(n) as in \ref{AR formula} we can conclude in a recursive equation for autocorrelation function as in \ref{YuleWalker 1}. The equations in \ref{YuleWalker 1} are called "Yule-Walker Equations".
+\begin{equation}\label{Autocorrelation}
+r_{XX}(k) = \frac{E[X(n-k)X(n)]}{\sigma_X^2}
+\end{equation}
+\begin{equation}\label{YuleWalker 1}
+r_{XX}(0) = 1,\qquad 
+r_{XX}(k) = \sum_{i=1}^{N}{a_ir_{XX}(k-i)}, \qquad k \geq 1
+\end{equation}
+This leads to a difference equation which can be expressed with vector equations as in \ref{yulewalker matrix 1}.
+\begin{equation}\label{yulewalker matrix 1}
+\begin{pmatrix}
+r_{XX}(1) \\ 
+r_{XX}(2) \\ 
+\vdots \\ 
+r_{XX}(N-1)\\ 
+r_{XX}(N) 
+\end{pmatrix} =  
+\begin{pmatrix}
+1 & r_{XX}(1) & ... & r_{XX}(N-2) & r_{XX}(N-1) \\
+r_{XX}(1) & 1 & ... & ... & r_{XX}(N-2) \\
+\vdots    & \vdots    & \vdots & \vdots & \vdots \\
+r_{XX}(N-2) & ... & ... & 1 & r_{XX}(1) \\
+r_{XX}(N-1) & r_{XX}(N-2) & ... & r_{XX}(1) & 1
+\end{pmatrix} 
+\begin{pmatrix} 
+a_{1} \\ 
+a_{2} \\
+\vdots \\
+a_{N-1} \\
+a_{N} \end{pmatrix}
+\end{equation}

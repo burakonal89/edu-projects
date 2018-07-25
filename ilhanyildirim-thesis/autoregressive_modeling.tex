@@ -1,0 +1,159 @@
+\section{Autoregressive Models}
+Autoregressive modeling is a widely used method in spectral signal analysis. It is also used in respiratory signal analysis and since the respiratory sounds have spectral characteristics changing over time, either we divide the sound into small pieces and assume the small pieces are stationary or we model the respiratory sounds as time varying autoregressive processes. It is reported that when a respiratory sound signal is modeled as TVAR process, the first AR coefficient is highly correlated with the airflow for the sounds recorded at trachea and have less but still correlation for the sounds recorded at chest wall \cite{koray-ieee-embs}. We will test this for the sounds recorded at chest wall and try to find best settings for most correlation in this subsection. We will try to extract the AR coefficients with three methods:
+\begin{itemize}
+	\item Windowing Based Autoregressive Modeling: Divide the signal into overlapping windows assume each window is independent from others.
+	\item Time Varying Autoregressive Modeling with Basis Functions: Assume the AR parameters are combination of sinusoidal signals. 
+	\item Time Varying Autoregressive Modeling with Kalman Filter: Assume the AR parameters are changing slowly.
+\end{itemize}
+\subsection{Univariate Autoregressive Model}
+Univariate AR model is a difference equation where the current measurement of the signal is a linear combination of past measured values and a white Gaussian noise. The model is equivalent to a filter with infinite impulse response where the input is white Gaussian noise. The equation of an AR model is given in \eqref{eq_univar_ar}. In this equation $a_{i}$ is the $i^{\text{th}}$ order AR coefficient, $N$ is the order of model and $e$ is the noise term where $\mu_e=0$ and $\sigma_e^2$ is constant \cite{random-signals}. 
+\begin{equation}\label{eq_univar_ar}
+x(n) = \sum_{i=1}^{N}{a_ix(n-i)} + e(n) 
+\end{equation} \par
+Before looking at mean, variance, autocorrelation and spectral content of a general AR model, we must set some conditions on $a_{i}$'s to make the model stationary. The stationarity requires the mean, variance and autocorrelation function is constant. If the mean is constant then \eqref{eq_univar_ar_mean} must hold. We know that $\mu_e$ is 0, then either $\sum_{i=1}^{N}{a_i} = 1$ or $\mu_x = 0$ is true. 
+\begin{equation}\label{eq_univar_ar_mean}
+\mu_x = \sum_{i=1}^{N}{a_i\mu_x} + \mu_e 
+\end{equation} \par
+We require $E[X(0)] = 0$ for initial conditions for AR processes and it ensures $\mu_x=0$. Then for variance we can write the equations in \eqref{eq_univar_ar_autocorr_1}, \eqref{eq_univar_ar_autocorr_2} and \eqref{eq_univar_ar_autocorr_3}.
+\begin{align}
+\sigma_{X}^2 = E[X(n)X(n)] - \mu_{X}^2 \label{eq_univar_ar_autocorr_1} \\
+\sigma_{X}^2 = \sum_{i=1}^{N}a_iE[X_nX_{n-i}] + E[X_ne_n] - \mu_{X}^2 \label{eq_univar_ar_autocorr_2}\\
+\sigma_{X}^2 = \sum_{i=1}^{N}a_iR_{XX}(i) + \sigma_e^2 \label{eq_univar_ar_autocorr_3}
+\end{align} \par
+We know that autocorrelation coefficients are very important in analysis of an AR model. The AR coefficients can be directly calculated in presence of autocorrelation coefficients.
+\begin{align}
+	r_{xx}(i) = R_{xx}(i)/R_{xx}(0) \label{eq_univar_ar_corrcoef_1}\\
+	r_{xx}(i) = E[x(n)x(n-i)]/R_{xx}(0) \label{eq_univar_ar_corrcoef_2} \\
+	r_{xx}(i) = \frac{\sum_{j=1}^{N}{E[a_jx(n-j)x(n-i)]}}{R_{xx}(0)} \label{eq_univar_ar_corrcoef_3}\\
+	r_{xx}(i) = \sum_{j=1}^{N}{a_jr_{xx}(i-j)} \label{eq_univar_ar_corrcoef_4}
+\end{align} \par
+The equation in \eqref{eq_univar_ar_corrcoef_4} is very useful since we can rewrite it as in \eqref{eq_univar_ar_yulewalker}, this equation is called Yule-Walker equation. So, given a signal generated with an AR model, we can find the coefficients of that model by solving the equation in \eqref{eq_univar_ar_yulewalker}. Let's call this equation as $r=Ra$, the the coefficients can easily be found with $a=R^{-1}r$. 
+\begin{equation}\label{eq_univar_ar_yulewalker}
+\begin{pmatrix}
+r_{XX}(1) \\ 
+r_{XX}(2) \\ 
+\vdots \\ 
+r_{XX}(N-1)\\ 
+r_{XX}(N) 
+\end{pmatrix} =  
+\begin{pmatrix}
+1 & r_{XX}(1) & ... & r_{XX}(N-2) & r_{XX}(N-1) \\
+r_{XX}(1) & 1 & ... & ... & r_{XX}(N-2) \\
+\vdots    & \vdots    & \vdots & \vdots & \vdots \\
+r_{XX}(N-2) & ... & ... & 1 & r_{XX}(1) \\
+r_{XX}(N-1) & r_{XX}(N-2) & ... & r_{XX}(1) & 1
+\end{pmatrix} 
+\begin{pmatrix} 
+a_{1} \\ 
+a_{2} \\
+\vdots \\
+a_{N-1} \\
+a_{N} \end{pmatrix}
+\end{equation} \par
+Although solving the equation \eqref{eq_univar_ar_yulewalker} seems to be very straightforward, it requires exact knowledge on correlation coefficients. However, when we are given a signal with finite length we can just estimate the correlation coefficients, and the error in calculated AR coefficients will depend on the condition number of R matrix. To solve this equation, there are several methods in literature, throughout this thesis we will use Burg's Method to find the AR coefficients, since it is more stable than the others \cite{delft-burg}.
+\begin{algorithm}
+	\caption{AR Coefficients Estimation With Overlapping Windows}
+	\label{Windowed AR}
+	\begin{algorithmic}[1]
+		\Procedure{WindowedAR}{signal, order, winLen, overlap}
+		\State $windowStart \gets 1$; $L \gets {Length(signal)}$;
+		\While{$windowStart \leq L-winLen$}
+		\State $temp \gets signal(windowStart:(windowStart+windowLength))$;
+		\State $AR(:,i) \gets EstimateAR(temp, N)$;
+		\State $windowStart \gets windowStart + windowLength$;
+		\EndWhile
+		\State \textbf{return} $AR$;
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}\\
+
+\subsection{Time Varying Autoregressive Model}
+While univariate autoregressive model is very useful for many signals, the method doesn't use the continuity of the signal and treats each segment independently. Assuming the coefficients at different time instants are correlated with each other and building some structured models is another method which is widely applied for nonstationary signals. TVAR modeling were applied to respiratory signals and satisfactory results have been obtained in many papers. The equation describing a TVAR process is given in \eqref{eq_tvar}. 
+\begin{equation}\label{eq_tvar}
+x(n) = \sum_{i=1}^{N}{a_i(n)x(n-i)} + e(n) 
+\end{equation} \par
+We will use two methods for solving this equation for $a_i$s. One of them is modeling $a_i$s as combination of sinusoids, the other one is modeling $a_i$s as slowly changing parameters.
+
+\subsubsection{TVAR Coefficients Estimation With Fourier Basis Functions}
+In this method, the AR coefficients are assumed to be combination of sinusoidal functions. Then equations in \eqref{eq_tvar_basis} and \eqref{eq_tvar_basis_2} can be written.
+\begin{align}
+x(n) = \sum_{i=1}^{N}{x(n-i)\sum_{j=1}^{M}{c_{ij}u_j(n-i)}} + e(n) 
+\label{eq_tvar_basis}\\
+a_{i}(n) = \sum_{j=1}^{M}{c_{ij}u_j(n-i)}
+\label{eq_tvar_basis_2}
+\end{align} \par
+Equation \eqref{eq_tvar_basis} can be rewritten in vector form as in \eqref{eq_tvar_vector} where $X_{i}$ is the diagonal matrix with the diagonal elements are adjacent elements of $x$ starting from $i$, $U$ is the matrix whose columns are basis vectors, and the $c_{i}$'s are the unknown parameters in this equation.
+\begin{equation} \label{eq_tvar_vector}
+	x = \sum_{i=1}^{N}X_{i}Uc_{i} + e
+\end{equation} \par
+Let $Y_{i} = X_{i}U$, the equation can be written in matrix form as in 
+\begin{equation}\label{matrix_form}
+x = 
+\begin{pmatrix}
+Y_{1} | Y_{2}  
+\hdots Y_{N}
+\end{pmatrix} 
+\begin{pmatrix}
+c_{1} \\
+c_{2} \\
+\vdots \\
+c_{M}
+\end{pmatrix}
++ e
+\end{equation} \par
+The equation in \eqref{matrix_form} describes an overdetermined set of equations, we will use least squares approach to solve this. After finding {$\textbf{c}$} vector, which has $NxM$ elements, calculating $a_{i}(n)$, TVAR coefficients, will be straightforward.
+\begin{equation}
+	\textbf{c} = (Y^{T}Y)^{-1}Y^{T}x
+\end{equation} \par
+We will try to find the optimum values for AR order, number of basis vectors, and the range of frequencies spanned by basis vectors to get the best correlation.
+\begin{algorithm}
+	\caption{TVAR Coefficients Estimation With Fourier Basis Functions}
+	\label{Basis TVAR}
+	\begin{algorithmic}[1]
+		\Procedure{TVARFourierBasis}{signal, order, freqRange, numBasis}
+		\State $\delta_f=freqRange/numBasis$;
+		\For{i=1:numBasis}
+		\State $U(:,2*i-1)$ $=$ $sin(i*\delta_{f})$;
+		\State $U(:,2*i)$ $=$ $cos(i*\delta_{f})$;
+		\EndFor
+		\State $Generate$ $Y$: $Project$ $signal$ $onto$ $U$;
+		\State $c$ = $(Y^{T}Y)^{-1}Y^{T}x$
+		\For{i=1:N}
+			\State $AR(:,i)$ $=$ $U$$c_{i}$;
+		\EndFor
+		\State \textbf{return} $AR$;
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}\\
+\subsubsection{TVAR Coefficients Estimation With Kalman Filter}
+Kalman filter is a very old but still popular algorithm in field of information processing. It is the minimum mean square estimator for the state of linear dynamical systems \cite{kalman-neural}. It is used everywhere from tracking applications to computer games. \par
+Before explaining how Kalman filter works, we must first give the required equations to describe the model where it is applied. Kalman filter is invented to work on dynamic systems where we can record the noisy observations of transformations of the process in interest. So we may give two equations, for both measurement \eqref{Kalman measurement} and process \eqref{Kalman process} model \cite{kalman-seismic}.
+\begin{align}
+	y_n = H_nx_{n} + v_n \label{Kalman measurement}	\\
+	x_n = F_n x_{n-1} + B_n u_n + w_n \label{Kalman process}	
+\end{align} \par
+In \eqref{Kalman process} $x$ is the state vector, $u$ is control input to the system, $B$ is the control matrix, $F$ is the state transition matrix and $w$ is process noise. In \eqref{Kalman measurement} the $H$ is the transform matrix and $v$ is the measurement noise. When a model desribed in \eqref{Kalman measurement} and \eqref{Kalman process} is present, we can observe $y$ and we are after estimatin $x$, we can apply Kalman filter. When the process and measurement noises are Gaussian then Kalman is the optimal estimator. \par
+In our problem, there is not any control input to system and equations convert to \eqref{Kalman measurement respiratory} and \eqref{Kalman process respiratory}. In these equations $y$ is the recorded sound amplitude, $x$ is the AR coefficients, $H$ is equal to raw vector containing previous $N$ values of $y$ where $N$ is the AR order.
+\begin{align}
+	y_n = H_nx_{n} + v_n \label{Kalman measurement respiratory}	\\
+	x_n = F_n x_{n-1} + w_n \label{Kalman process respiratory}	
+\end{align} \par
+Kalman filter includes two stages, prediction and measurement update. The prediction equations are given in \eqref{Kalman prediction 1} and \eqref{Kalman prediction 2}. The measurement update equations are given in \eqref{Kalman measurement update 1}, \eqref{Kalman measurement update 2} and \eqref{Kalman measurement update 3}. In these equations $\hat{x}_{n|m} = E[x_{n}|y_{1:m}]$ and $P_{n|m} = E[(x_n-\hat{x}_{n|m})(x_n-\hat{x}_{n|m})^T|y_{1:m}]$. \par
+Prediction:
+\begin{align}
+	\hat{{x}}_{n|n-1} = F\hat{{x}}_{n-1|n-1}\label{Kalman prediction 1}	\\
+	P_{n|n-1} = FP_{n-1|n-1}F^T + \sigma_{w}^{2} \label{Kalman prediction 2}
+\end{align}  \par
+Measurement Update:
+\begin{align}
+	K_n = P_{n|n-1}H(H_n^TP_{n|n-1}H_n + \sigma_{v}^{2})^{-1} \label{Kalman measurement update 1} \\
+	\hat{x}_{n|n} = \hat{x}_{n|n-1} + K_n(y_n - H_n^T\hat{x}_{n|n-1}) \label{Kalman measurement update 2} \\
+	P_{n|n} = (I-K_nH_n^T)P_{n|n-1} \label{Kalman measurement update 3}
+\end{align} \par
+In the equations above, the filter uses only measurement values before $N$ to estimate a value of $x_N$. In order to add the information from complete signal, the estimations can be smoothed with Rauch-Tung-Striebel backward recursions given in \eqref{Kalman backward 1}, \eqref{Kalman backward 2} and \eqref{Kalman backward 3}.
+\begin{align}
+J_n = P_{n|n}F^TP_{n+1|n}^{-1}  \label{Kalman backward 1} \\
+\hat{x}_{n|N} = \hat{x}_{n|n} + J_n(x_{n+1|N} - x_{n+1|n}) \label{Kalman backward 2} \\
+P_{n|N} = P_{n|n} + J_n(P_{n+1|N} - P_{n+1|n})J_{n}^T \label{Kalman backward 3}
+\end{align}  \par
+There process noise, state transition matrix and measurement noise are not being updated, and we must tune them. The tuning process and results will be given in Experiments \& Results section.

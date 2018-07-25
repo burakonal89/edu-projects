@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: test.aux
+The style file: styles/fbe_tez_v11.bst
+Database file #1: references.bib
+You're missing a field name---line 107 of file references.bib
+ :     year     = {2013}, 
+ :                        %other attributes omitted
+I'm skipping whatever remains of this entry
+You're missing a field name---line 193 of file references.bib
+ :     year     = {2009}, 
+ :                        %other attributes omitted
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "a"
+Warning--empty booktitle in delft-burg
+Warning--empty year in delft-burg
+You've used 22 entries,
+            2321 wiz_defined-function locations,
+            648 strings with 7715 characters,
+and the built_in function-call counts, 8329 in all, are:
+= -- 533
+> -- 218
+< -- 29
++ -- 71
+- -- 49
+* -- 472
+:= -- 839
+add.period$ -- 22
+call.type$ -- 22
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 919
+empty$ -- 863
+format.name$ -- 64
+if$ -- 1932
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 202
+newline$ -- 73
+num.names$ -- 22
+pop$ -- 316
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 280
+stack$ -- 0
+substring$ -- 404
+swap$ -- 648
+text.length$ -- 29
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 50
+width$ -- 24
+write$ -- 199
+(There were 2 error messages)
