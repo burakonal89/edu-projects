@@ -1,3 +1,6 @@
 *.DS_Store
 *.ipynb
-.ipynb_checkpoints
+*-checkpoint.ipynb
+*.txt
+*.csv
+*.tsv
