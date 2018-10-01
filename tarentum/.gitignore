@@ -1,4 +1,10 @@
 *.csv
 *.dot
-.ipynb_checkpoint/
+.ipynb_checkpoints/
 untitled.*
+*.DS_Store
+*.ipynb
+*-checkpoint.ipynb
+*.txt
+*.csv
+*.tsv
